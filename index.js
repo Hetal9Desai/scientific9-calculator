@@ -12,17 +12,17 @@ document.addEventListener("DOMContentLoaded", function () {
         expression = expression.slice(0, -1); // Remove last character
       } else if (value === "=") {
         try {
-          expression = eval(expression.replace(/×/g, "*").replace(/÷/g, "/"));
+          expression = eval(expression.replace(/x/g, "*").replace(/÷/g, "/"));
         } catch (error) {
           expression = "Error";
         }
       } else if (value === "+") {
         expression += "+";
-      } else if (value === "−") {
+      } else if (value === "-") {
         expression += "-";
       } else if (value === "÷") {
         expression += "/";
-      } else if (value === "×") {
+      } else if (value === "x") {
         expression += "*";
       } else if (value === "+/-") {
         expression = eval(expression) * -1;
