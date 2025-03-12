@@ -7,9 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
       const value = this.textContent;
 
       if (value === "C") {
-        expression = ""; // Reset
+        expression = "";
       } else if (value === "⌫") {
-        expression = expression.slice(0, -1); // Remove last character
+        expression = expression.slice(0, -1);
       } else if (value === "=") {
         try {
           expression = eval(expression.replace(/x/g, "*").replace(/÷/g, "/"));
