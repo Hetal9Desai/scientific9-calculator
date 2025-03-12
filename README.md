@@ -20,6 +20,7 @@ This calculator makes use of **Unicode characters** for certain operations to en
 - `⌫` for the backspace (Unicode U+232B)
 
 By using these Unicode characters, the calculator provides a more visually appealing and intuitive experience for users.
+
 Link : "https://symbl.cc/en/unicode-table/"
 
 ## Files Included:
