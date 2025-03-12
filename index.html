@@ -8,11 +8,12 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
-   
-   
-
+  </head>
   <body>
     <div
       class="container d-flex justify-content-center align-items-center vh-100"
@@ -20,11 +21,13 @@
       <div class="calculator">
         <div class="screen">0</div>
 
+        <!-- First button group -->
         <div class="d-flex justify-content-start ms-1 gap-25px">
           <button class="btn btn-light calDiv__btn border-0 p-1">DEG</button>
           <button class="btn btn-light calDiv__btn border-0 p-1">F-E</button>
         </div>
 
+        <!-- Second button group -->
         <div class="d-flex justify-content-between my-2">
           <button class="btn btn-light btn-sm btn-opacity">MC</button>
           <button class="btn btn-light btn-sm btn-opacity">MR</button>
@@ -33,6 +36,7 @@
           <button class="btn btn-light btn-sm btn-bold">MS</button>
         </div>
 
+        <!-- Trigonometry and function buttons -->
         <div class="d-flex justify-content-start ms-1 gap-25px">
           <button class="btn btn-light btn-sm btn-trig-func">
             <img
@@ -43,16 +47,15 @@
             Trigonometry
             <i class="fa-solid fa-chevron-down arrow-icon"></i>
           </button>
-
           <button class="btn btn-light btn-sm btn-trig-func">
             𝑓 Function
             <i class="fa-solid fa-chevron-down arrow-icon"></i>
           </button>
         </div>
 
+        <!-- Number buttons row -->
         <div class="row text-center">
           <button class="btn btn-light btn-calc">2<sup>nd</sup></button>
-
           <button class="btn btn-light btn-calc">&pi;</button>
           <button class="btn btn-light btn-calc">e</button>
           <button class="btn btn-light btn-calc">C</button>
@@ -91,11 +94,8 @@
       </div>
     </div>
 
+    <!-- JavaScript dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="index.js">
-      
-    </script>
-
- 
+    <script src="index.js"></script>
   </body>
 </html>
