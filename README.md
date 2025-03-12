@@ -17,8 +17,10 @@ This calculator makes use of **Unicode characters** for certain operations to en
 - `−` (minus) for `−` (Unicode U+2212)
 - `π` (pi) for `π` (Unicode U+03C0)
 - `e` for the mathematical constant _e_ (Unicode U+0065)
+- `⌫` for the backspace (Unicode U+232B)
 
 By using these Unicode characters, the calculator provides a more visually appealing and intuitive experience for users.
+Link : "https://symbl.cc/en/unicode-table/"
 
 ## Files Included:
 

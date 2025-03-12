@@ -18,11 +18,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       } else if (value === "+") {
         expression += "+";
-      } else if (value === "-") {
+      } else if (value === "−") {
         expression += "-";
       } else if (value === "÷") {
         expression += "/";
-      } else if (value === "x") {
+      } else if (value === "×") {
         expression += "*";
       } else if (value === "+/-") {
         expression = eval(expression) * -1;
