@@ -101,10 +101,9 @@ class Calculator extends Operations {
     this.previousValue = "";
     this.operation = "";
     this.updateScreen();
-    
+
   }
 
- 
 
   setOperation(op) {
     const operationsMap = {
@@ -144,6 +143,108 @@ class Calculator extends Operations {
     );
     this.updateScreen();
   }
+
+  // Advanced operations
+  square() {
+    const original = this.currentValue;
+    const val = parseFloat(original);
+    this.currentValue = (val * val).toString();
+    this.displayValue = this.currentValue;
+    this.updateScreen();
+  }
+  squareRoot() {
+    const original = this.currentValue;
+    const val = parseFloat(original);
+    this.currentValue = val < 0 ? "Error" : Math.sqrt(val).toString();
+    this.displayValue = this.currentValue;
+    this.updateScreen();
+  }
+  inverse() {
+    const original = this.currentValue;
+    const val = parseFloat(original);
+    this.currentValue = val === 0 ? "Error" : (1 / val).toString();
+    this.displayValue = this.currentValue;
+    this.updateScreen();
+  }
+  absolute() {
+    const original = this.currentValue;
+    const val = parseFloat(original);
+    this.currentValue = Math.abs(val).toString();
+    this.displayValue = this.currentValue;
+    this.updateScreen();
+  }
+  // Constants
+  pi() {
+    this.currentValue = Math.PI.toString();
+    this.displayValue += Math.PI;
+    this.updateScreen();
+  }
+  e() {
+    this.currentValue = Math.E.toString();
+    this.displayValue += Math.E;
+    this.updateScreen();
+  }
+  // Logs
+  log() {
+    const original = this.currentValue;
+    const val = parseFloat(original);
+    this.currentValue = val > 0 ? Math.log10(val).toString() : "Error";
+    this.displayValue = this.currentValue;
+    this.updateScreen();
+  }
+  factorial() {
+    const original = this.currentValue;
+    const n = parseInt(original, 10);
+    if (n < 0) {
+      this.currentValue = "Error";
+      this.displayValue = "Error";
+      this.updateScreen();
+      return;
+    }
+    this.currentValue = this._calcFactorial(n).toString();
+    this.displayValue = this.currentValue;
+    this.updateScreen();
+  }
+  _calcFactorial(n) {
+    return n <= 1 ? 1 : n * this._calcFactorial(n - 1);
+  }
+  ln() {
+    const original = this.currentValue;
+    const val = parseFloat(original);
+    this.currentValue = val > 0 ? Math.log(val).toString() : "Error";
+    this.displayValue = this.currentValue;
+    this.updateScreen();
+  }
+  exp() {
+    const original = this.currentValue;
+    const val = parseFloat(original);
+    this.currentValue = Math.exp(val).toString();
+    this.displayValue = this.currentValue;
+    this.updateScreen();
+  }
+  tenPowerX() {
+    const original = this.currentValue;
+    const val = parseFloat(original);
+    this.currentValue = Math.pow(10, val).toString();
+    this.displayValue = this.currentValue;
+    this.updateScreen();
+  }
+  twoPowerX() {
+    const original = this.currentValue;
+    const val = parseFloat(original);
+    this.currentValue = Math.pow(2, val).toString();
+    this.displayValue = this.currentValue;
+    this.updateScreen();
+  }
+  xPowerY() {
+    if (this.currentValue === "") return;
+    this.operation = "^";
+    this.previousValue = this.currentValue;
+    this.currentValue = "";
+    this.displayValue += " ** ";
+    this.updateScreen();
+  }
+
 }
 
 // Create a Calculator instance
@@ -154,22 +255,35 @@ document.querySelectorAll(".btn-calc").forEach((button) => {
   button.addEventListener("click", function (event) {
     const action = event.currentTarget.getAttribute("data-action");
 
-   
+
     if (!isNaN(action)) {
       calculator.appendNumber(action);
     } else {
-      
       const actionsMap = {
         clear: () => calculator.clear(),
         backspace: () => calculator.backspace(),
-        equals: () => calculator.operate(), 
+        equals: () => calculator.operate(),
         decimal: () => calculator.decimal(),
         "plus-minus": () => calculator.plusMinus(),
+        square: () => calculator.square(),
+        sqrt: () => calculator.squareRoot(),
+        inverse: () => calculator.inverse(),
+        absolute: () => calculator.absolute(),
         add: () => calculator.setOperation("add"),
         minus: () => calculator.setOperation("minus"),
         multiply: () => calculator.setOperation("multiply"),
         divide: () => calculator.setOperation("divide"),
         mod: () => calculator.setOperation("mod"),
+        pi: () => calculator.pi(),
+        e: () => calculator.e(),
+        log: () => calculator.log(),
+        factorial: () => calculator.factorial(),
+        ln: () => calculator.ln(),
+        exp: () => calculator.exp(),
+        tenPowerX: () => calculator.tenPowerX(),
+        twoPowerX: () => calculator.twoPowerX(),
+        xPowerY: () => calculator.xPowerY(),
+
       };
 
       if (actionsMap[action]) {
