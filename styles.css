@@ -1,8 +1,9 @@
+
 /* ====== Base Styles ====== */
 body {
   background-color: #f8f9fa !important;
   transition: background-color 0.3s ease, color 0.3s ease;
-}
+
 
 .calculator {
   width: 350px;
@@ -26,6 +27,7 @@ body {
   background-color: #e9ecef;
   border-radius: 4px;
   margin-bottom: 10px;
+
 }
 
 .btn-calc {
@@ -62,6 +64,7 @@ body {
   font-weight: 500;
   border-radius: 4px;
   padding: 6px 10px;
+
 }
 
 .calDiv-trigonoImg--size {
@@ -75,6 +78,7 @@ body {
   font-size: 12px;
   margin-left: 5px;
 }
+
 
 /* Custom dropdown styling */
 .dropdown-menu {
@@ -157,3 +161,4 @@ body {
 .dark-theme .dropdown-menu button:hover {
   background-color: #666;
 }
+

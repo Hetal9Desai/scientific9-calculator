@@ -101,7 +101,9 @@ class Calculator extends Operations {
     this.previousValue = "";
     this.operation = "";
     this.updateScreen();
+
   }
+
 
   setOperation(op) {
     const operationsMap = {
@@ -141,6 +143,7 @@ class Calculator extends Operations {
     );
     this.updateScreen();
   }
+
   // Advanced operations
   square() {
     const original = this.currentValue;
@@ -241,6 +244,7 @@ class Calculator extends Operations {
     this.displayValue += " ** ";
     this.updateScreen();
   }
+
 }
 
 // Create a Calculator instance
@@ -250,6 +254,7 @@ const calculator = new Calculator();
 document.querySelectorAll(".btn-calc").forEach((button) => {
   button.addEventListener("click", function (event) {
     const action = event.currentTarget.getAttribute("data-action");
+
 
     if (!isNaN(action)) {
       calculator.appendNumber(action);
@@ -278,6 +283,7 @@ document.querySelectorAll(".btn-calc").forEach((button) => {
         tenPowerX: () => calculator.tenPowerX(),
         twoPowerX: () => calculator.twoPowerX(),
         xPowerY: () => calculator.xPowerY(),
+
       };
 
       if (actionsMap[action]) {
