@@ -188,9 +188,36 @@ class Calculator extends Operations {
     this.currentValue = val > 0 ? Math.log10(val).toString() : "Error";
     this.displayValue = this.currentValue;
     this.updateScreen();
-    if (this.currentValue !== "Error") {
-      this.saveHistory(`log(${original}) = ${this.currentValue}`);
+  }
+  factorial() {
+    const original = this.currentValue;
+    const n = parseInt(original, 10);
+    if (n < 0) {
+      this.currentValue = "Error";
+      this.displayValue = "Error";
+      this.updateScreen();
+      return;
     }
+    this.currentValue = this._calcFactorial(n).toString();
+    this.displayValue = this.currentValue;
+    this.updateScreen();
+  }
+  _calcFactorial(n) {
+    return n <= 1 ? 1 : n * this._calcFactorial(n - 1);
+  }
+  ln() {
+    const original = this.currentValue;
+    const val = parseFloat(original);
+    this.currentValue = val > 0 ? Math.log(val).toString() : "Error";
+    this.displayValue = this.currentValue;
+    this.updateScreen();
+  }
+  exp() {
+    const original = this.currentValue;
+    const val = parseFloat(original);
+    this.currentValue = Math.exp(val).toString();
+    this.displayValue = this.currentValue;
+    this.updateScreen();
   }
 }
 
@@ -223,6 +250,9 @@ document.querySelectorAll(".btn-calc").forEach((button) => {
         pi: () => calculator.pi(),
         e: () => calculator.e(),
         log: () => calculator.log(),
+        factorial: () => calculator.factorial(),
+        ln: () => calculator.ln(),
+        exp: () => calculator.exp(),
       };
 
       if (actionsMap[action]) {
