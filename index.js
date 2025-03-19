@@ -170,6 +170,28 @@ class Calculator extends Operations {
     this.displayValue = this.currentValue;
     this.updateScreen();
   }
+  // Constants
+  pi() {
+    this.currentValue = Math.PI.toString();
+    this.displayValue += Math.PI;
+    this.updateScreen();
+  }
+  e() {
+    this.currentValue = Math.E.toString();
+    this.displayValue += Math.E;
+    this.updateScreen();
+  }
+  // Logs
+  log() {
+    const original = this.currentValue;
+    const val = parseFloat(original);
+    this.currentValue = val > 0 ? Math.log10(val).toString() : "Error";
+    this.displayValue = this.currentValue;
+    this.updateScreen();
+    if (this.currentValue !== "Error") {
+      this.saveHistory(`log(${original}) = ${this.currentValue}`);
+    }
+  }
 }
 
 // Create a Calculator instance
@@ -198,6 +220,9 @@ document.querySelectorAll(".btn-calc").forEach((button) => {
         multiply: () => calculator.setOperation("multiply"),
         divide: () => calculator.setOperation("divide"),
         mod: () => calculator.setOperation("mod"),
+        pi: () => calculator.pi(),
+        e: () => calculator.e(),
+        log: () => calculator.log(),
       };
 
       if (actionsMap[action]) {
