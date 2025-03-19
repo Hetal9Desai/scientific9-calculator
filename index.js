@@ -55,8 +55,6 @@ class Calculator extends Operations {
     this.previousValue = "";
     this.operation = "";
     this.displayValue = "";
-    this.isExponent = false;
-    this.openParenthesesCount = 0;
     this.updateScreen();
   }
 
@@ -102,13 +100,7 @@ class Calculator extends Operations {
     this.displayValue = this.currentValue;
     this.previousValue = "";
     this.operation = "";
-    this.isExponent = false;
     this.updateScreen();
-    CalcHistory.save(entry);
-  }
-
-  saveHistory(entry) {
-    CalcHistory.save(entry);
   }
 
   setOperation(op) {
@@ -149,6 +141,35 @@ class Calculator extends Operations {
     );
     this.updateScreen();
   }
+  // Advanced operations
+  square() {
+    const original = this.currentValue;
+    const val = parseFloat(original);
+    this.currentValue = (val * val).toString();
+    this.displayValue = this.currentValue;
+    this.updateScreen();
+  }
+  squareRoot() {
+    const original = this.currentValue;
+    const val = parseFloat(original);
+    this.currentValue = val < 0 ? "Error" : Math.sqrt(val).toString();
+    this.displayValue = this.currentValue;
+    this.updateScreen();
+  }
+  inverse() {
+    const original = this.currentValue;
+    const val = parseFloat(original);
+    this.currentValue = val === 0 ? "Error" : (1 / val).toString();
+    this.displayValue = this.currentValue;
+    this.updateScreen();
+  }
+  absolute() {
+    const original = this.currentValue;
+    const val = parseFloat(original);
+    this.currentValue = Math.abs(val).toString();
+    this.displayValue = this.currentValue;
+    this.updateScreen();
+  }
 }
 
 // Create a Calculator instance
@@ -159,17 +180,19 @@ document.querySelectorAll(".btn-calc").forEach((button) => {
   button.addEventListener("click", function (event) {
     const action = event.currentTarget.getAttribute("data-action");
 
-    // Handling numbers (digits)
     if (!isNaN(action)) {
       calculator.appendNumber(action);
     } else {
-      // Define action handling for other buttons
       const actionsMap = {
         clear: () => calculator.clear(),
         backspace: () => calculator.backspace(),
-        equals: () => calculator.operate(), // Corrected from evaluateExpression to operate()
+        equals: () => calculator.operate(),
         decimal: () => calculator.decimal(),
         "plus-minus": () => calculator.plusMinus(),
+        square: () => calculator.square(),
+        sqrt: () => calculator.squareRoot(),
+        inverse: () => calculator.inverse(),
+        absolute: () => calculator.absolute(),
         add: () => calculator.setOperation("add"),
         minus: () => calculator.setOperation("minus"),
         multiply: () => calculator.setOperation("multiply"),
