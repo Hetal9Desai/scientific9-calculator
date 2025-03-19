@@ -219,6 +219,28 @@ class Calculator extends Operations {
     this.displayValue = this.currentValue;
     this.updateScreen();
   }
+  tenPowerX() {
+    const original = this.currentValue;
+    const val = parseFloat(original);
+    this.currentValue = Math.pow(10, val).toString();
+    this.displayValue = this.currentValue;
+    this.updateScreen();
+  }
+  twoPowerX() {
+    const original = this.currentValue;
+    const val = parseFloat(original);
+    this.currentValue = Math.pow(2, val).toString();
+    this.displayValue = this.currentValue;
+    this.updateScreen();
+  }
+  xPowerY() {
+    if (this.currentValue === "") return;
+    this.operation = "^";
+    this.previousValue = this.currentValue;
+    this.currentValue = "";
+    this.displayValue += " ** ";
+    this.updateScreen();
+  }
 }
 
 // Create a Calculator instance
@@ -253,6 +275,9 @@ document.querySelectorAll(".btn-calc").forEach((button) => {
         factorial: () => calculator.factorial(),
         ln: () => calculator.ln(),
         exp: () => calculator.exp(),
+        tenPowerX: () => calculator.tenPowerX(),
+        twoPowerX: () => calculator.twoPowerX(),
+        xPowerY: () => calculator.xPowerY(),
       };
 
       if (actionsMap[action]) {
